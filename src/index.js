@@ -4,7 +4,7 @@ import App from "./App";
 import { makeServer } from "./server";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import { VideosProvider } from "contexts";
+import { VideosProvider, AuthProvider } from "contexts";
 
 // Call make Server
 makeServer();
@@ -12,9 +12,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <VideosProvider>
-        <App />
-      </VideosProvider>
+      <AuthProvider>
+        <VideosProvider>
+          <App />
+        </VideosProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

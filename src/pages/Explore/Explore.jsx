@@ -1,5 +1,5 @@
 import "./Explore.css";
-import { Navbar, Sidebar } from "components";
+import { Sidebar } from "components";
 import { VideoCard } from "components/VideoCard/VideoCard";
 import { useVideos } from "contexts";
 const Explore = () => {
@@ -8,19 +8,15 @@ const Explore = () => {
   } = useVideos();
 
   return (
-    <div className="page-wrapper">
-      <Navbar />
+    <section className="main-section">
+      <Sidebar />
 
-      <section className="main-section">
-        <Sidebar />
-
-        <div className="component-container videos-container">
-          {videos.map((video) => (
-            <VideoCard video={video} key={video._id} />
-          ))}
-        </div>
-      </section>
-    </div>
+      <div className="component-container videos-container">
+        {videos.map((video) => (
+          <VideoCard video={video} key={video._id} />
+        ))}
+      </div>
+    </section>
   );
 };
 

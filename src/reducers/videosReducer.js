@@ -1,6 +1,6 @@
-import { actionTypes } from "./actionTypes";
+import { videoActions } from "./actionTypes";
 
-const { GET_VIDEOS } = actionTypes;
+const { GET_VIDEOS } = videoActions;
 
 const videosReducer = (state, { type, payload }) => {
   switch (type) {
