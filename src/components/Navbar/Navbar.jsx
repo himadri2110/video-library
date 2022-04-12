@@ -29,7 +29,7 @@ const Navbar = () => {
 
         {isAuth ? (
           <Link
-            to="/"
+            to="/logout"
             className="icon logout"
             title="Logout"
             onClick={() => {

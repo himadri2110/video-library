@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "components";
-import { Explore, Login, SignUp } from "pages";
+import { Explore, Login, Logout, SignUp } from "pages";
 import { useAuth } from "contexts";
 
 const AppRoutes = () => {
@@ -20,11 +20,13 @@ const AppRoutes = () => {
           <>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/logout" element={<Logout />} />
           </>
         ) : (
           <>
             <Route path="/login" element={<Navigate to="/" replace />} />
             <Route path="/signup" element={<Navigate to="/" replace />} />
+            <Route path="/logout" element={<Navigate to="/" replace />} />
           </>
         )}
       </Routes>
