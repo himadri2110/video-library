@@ -5,17 +5,51 @@
 
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
-    title: "Awesome Video about Coding",
+    _id: "PkZNo7MFNFg",
+    title: "Learn JavaScript - Full Course for Beginners",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "Soham Shah",
+      "This complete 134-part JavaScript tutorial for beginners will teach you everything you need to know to get started with the JavaScript programming language.",
+    creator: "freeCodeCamp.org",
+    creatorAvatarId: "AKedOLRyPFojwY3CXV5ks5TwPrt2VifQn-nYNfkgLvVPkw",
   },
   {
-    _id: "F_Riqjdh2oM",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
+    _id: "KUJsaM-hAjs",
+    title: "First React App: Introduction to ReactJS library",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "Welcome to neogcamp. We have learned programming, web basics and vanillaJS in previous lessons. Now we use ReactJS, the most in-demand JS library today to create a dynamic app in the browser.",
+    creator: "Tanay Pratap",
+    creatorAvatarId: "AKedOLQnvobEXpzHCxB1g-q2aXbRDzSaznFVHo5OdFML",
+  },
+  {
+    _id: "h33Srr5J9nY",
+    title: "JavaScript ES6 Arrow Functions Tutorial",
+    creator: "Web Dev Simplified",
+    description:
+      "ES6 added many amazing new features to JavaScript, but by far one of the best features is arrow functions. Arrow functions not only make code much more concise and legible, but it also handles the scope of this in a much more intuitive way.",
+    creatorAvatarId: "AKedOLQpvSjzSCSo8ZKCjBZS7TRX7omb_kyQirh2zgEY",
+  },
+  {
+    _id: "TNhaISOUy6Q",
+    title: "10 React Hooks Explained // Plus Build your own from Scratch",
+    creator: "Fireship",
+    description:
+      "React hooks provide a highly-efficient was to tap into framework features and organize reactive logic.",
+    creatorAvatarId: "AKedOLR5CDv14gL4DQ7I4gxIlBMY6u-CNsq2qfeev48R2g",
+  },
+  {
+    _id: "yLZazznWoAs",
+    title: "JavaScript in the browser!",
+    creator: "Tanay Pratap",
+    description:
+      "Welcome to neogcamp. We have learned programming and web basics in previous lessons. This time we will use both things to create a dynamic app in a web browser. You'll learn about DOM scripting i.e. JS in the browser, calling servers, and getting data from there, taking user input and showing user output, and many more things.",
+    creatorAvatarId: "AKedOLQnvobEXpzHCxB1g-q2aXbRDzSaznFVHo5OdFML",
+  },
+  {
+    _id: "w7ejDZ8SWv8",
+    title: "React JS Crash Course",
+    creator: "Traversy Media",
+    description:
+      "Get started with React in this crash course. We will be building a task tracker app and look at components, props, state, hooks, working with an API and more.",
+    creatorAvatarId: "AKedOLSxHOOxxa9Af8Bfb2XMop3lm4tor9bViWiC-d5aaw",
   },
 ];

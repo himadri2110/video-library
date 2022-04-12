@@ -3,6 +3,7 @@
 
 :root {
   --box-shadow: 2px 2px 2px 0 var(--bg-color);
+  --bg-app: #f9f9f9;
 }
 
 * {
@@ -14,7 +15,25 @@
 
 body {
   overflow-x: hidden;
-  color: var(--text-color);
+  color: var(--text-secondary);
+  background-color: var(--bg-app);
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+section.main-section {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+}
+
+.component-container {
+  padding: 1.5rem;
+  width: 100%;
 }
 
 ::-webkit-scrollbar-track {
