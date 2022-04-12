@@ -1,1 +1,1 @@
-export { getVideoService } from "./videoService";
+export { getVideoService } from "./videoServices";
