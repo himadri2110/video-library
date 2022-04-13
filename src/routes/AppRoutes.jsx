@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "components";
 import { Explore, Login, Logout, SignUp } from "pages";
-import { useAuth } from "contexts";
+import { useAuth } from "customHooks";
 
 const AppRoutes = () => {
   const {

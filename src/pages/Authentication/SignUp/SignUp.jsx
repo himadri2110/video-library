@@ -1,13 +1,10 @@
 import "pages/Authentication/styles.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "contexts";
-import { authActions } from "reducers";
-import { signupService } from "services";
+import { useAuth } from "customHooks";
 
 const SignUp = () => {
-  const { dispatchAuth, navigate } = useAuth();
-  const { SET_TOKEN, SET_AUTH } = authActions;
+  const { signupHandler } = useAuth();
 
   const [signup, setSignup] = useState({
     input: {},
@@ -30,33 +27,6 @@ const SignUp = () => {
     }
   };
 
-  const signupHandler = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { data } = await signupService(signup.input);
-
-      localStorage.setItem("VL_isAuth", true);
-      localStorage.setItem("VL_token", data.encodedToken);
-
-      dispatchAuth({
-        type: SET_TOKEN,
-        payload: { token: data.encodedToken },
-      });
-
-      dispatchAuth({
-        type: SET_AUTH,
-        payload: { isAuth: true },
-      });
-
-      setSignup({ ...signup, input: "" });
-
-      navigate("/");
-    } catch (err) {
-      setSignup({ ...signup, error: err.response.data.errors[0] });
-    }
-  };
-
   return (
     <section className="main-section login-container">
       <div className="card-wrapper basic-card card-text-only">
@@ -67,7 +37,10 @@ const SignUp = () => {
         </div>
 
         <div className="card-content">
-          <form className="form-group" onSubmit={signupHandler}>
+          <form
+            className="form-group"
+            onSubmit={(e) => signupHandler(e, signup, setSignup)}
+          >
             <div className="input-group input input-primary">
               <label className="input-label">
                 FirstName<span>*</span>

@@ -1,15 +1,13 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { SearchBar } from "components";
-import { useAuth } from "contexts";
-import { authActions } from "reducers";
+import { useAuth } from "customHooks";
 
 const Navbar = () => {
   const {
     authState: { isAuth },
-    dispatchAuth,
+    logoutHandler,
   } = useAuth();
-  const { SET_AUTH } = authActions;
 
   return (
     <nav className="nav-bar">
@@ -32,14 +30,7 @@ const Navbar = () => {
             to="/logout"
             className="icon logout"
             title="Logout"
-            onClick={() => {
-              localStorage.removeItem("VL_token");
-              localStorage.setItem("VL_isAuth", false);
-              dispatchAuth({
-                type: SET_AUTH,
-                payload: { isAuth: false },
-              });
-            }}
+            onClick={logoutHandler}
           >
             <i className="fa-solid fa-sign-out"></i>
             <span>Logout</span>
