@@ -2,6 +2,7 @@
   padding: 0.5rem 1.75rem;
   background-color: var(--white);
   justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -34,6 +35,8 @@
 
 .nav-action {
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .nav-action a {

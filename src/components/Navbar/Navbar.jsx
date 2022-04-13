@@ -1,8 +1,14 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { SearchBar } from "components";
+import { useAuth } from "customHooks";
 
 const Navbar = () => {
+  const {
+    authState: { isAuth },
+    logoutHandler,
+  } = useAuth();
+
   return (
     <nav className="nav-bar">
       <Link to="/" className="nav-brand">
@@ -18,6 +24,23 @@ const Navbar = () => {
         <Link to="/explore" className="nav-primary">
           <span>Explore</span>
         </Link>
+
+        {isAuth ? (
+          <Link
+            to="/logout"
+            className="icon logout"
+            title="Logout"
+            onClick={logoutHandler}
+          >
+            <i className="fa-solid fa-sign-out"></i>
+            <span>Logout</span>
+          </Link>
+        ) : (
+          <Link to="/login" className="icon login" title="Login">
+            <i className="fa-solid fa-sign-in"></i>
+            <span>Login</span>
+          </Link>
+        )}
       </div>
     </nav>
   );

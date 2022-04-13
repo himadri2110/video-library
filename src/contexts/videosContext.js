@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { videosReducer, actionTypes } from "reducers";
+import { videosReducer, videoActions } from "reducers";
 import { getVideoService } from "services";
 
-const { GET_VIDEOS } = actionTypes;
+const { GET_VIDEOS } = videoActions;
 
 const VideosContext = createContext();
 

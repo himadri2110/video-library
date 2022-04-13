@@ -1,2 +1,3 @@
+export { videoActions, authActions } from "./actionTypes";
 export { videosReducer } from "./videosReducer";
-export { actionTypes } from "./actionTypes";
+export { authReducer } from "./authReducer";
