@@ -145,19 +145,15 @@ const SignUp = () => {
               ) : null}
             </div>
 
-            {signup.pwdMatch ? (
-              <button className="btn btn-primary" type="submit">
-                Create New Account
-              </button>
-            ) : (
-              <button
-                className="btn btn-primary btn-disabled"
-                type="submit"
-                disabled
-              >
-                Create New Account
-              </button>
-            )}
+            <button
+              className={`btn btn-primary ${
+                signup.pwdMatch ? "" : "btn-disabled"
+              }`}
+              type="submit"
+              disabled={!signup.pwdMatch}
+            >
+              Create New Account
+            </button>
           </form>
         </div>
 

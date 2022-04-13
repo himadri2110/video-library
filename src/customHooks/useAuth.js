@@ -39,7 +39,7 @@ const useAuth = () => {
     try {
       const { data, status } = await signupService(signup.input);
 
-      if (status === 200) {
+      if (status === 201) {
         localStorage.setItem("VL_isAuth", true);
         localStorage.setItem("VL_token", data.encodedToken);
 
