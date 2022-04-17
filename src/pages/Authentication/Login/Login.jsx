@@ -1,10 +1,15 @@
 import "pages/Authentication/styles.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "customHooks";
 
 const Login = () => {
-  const { loginHandler } = useAuth();
+  const location = useLocation();
+  const {
+    authState: { isAuth },
+    loginHandler,
+    navigate,
+  } = useAuth();
 
   const [login, setLogin] = useState({
     input: {},

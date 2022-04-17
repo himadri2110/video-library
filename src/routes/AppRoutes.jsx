@@ -1,13 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { RequiresAuth } from "routes/RequiresAuth";
 import { Navbar } from "components";
-import { Explore, Login, Logout, SignUp } from "pages";
-import { useAuth } from "customHooks";
+import { Explore, Playlists, Login, Logout, SignUp } from "pages";
 
 const AppRoutes = () => {
-  const {
-    authState: { isAuth },
-  } = useAuth();
-
   return (
     <div className="page-wrapper">
       <Navbar />
@@ -15,20 +11,19 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Explore />} />
         <Route path="/explore" element={<Explore />} />
+        <Route
+          path="/playlists"
+          element={
+            <RequiresAuth>
+              <Playlists />
+            </RequiresAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/logout" element={<Logout />} />
 
-        {!isAuth ? (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/logout" element={<Logout />} />
-          </>
-        ) : (
-          <>
-            <Route path="/login" element={<Navigate to="/" replace />} />
-            <Route path="/signup" element={<Navigate to="/" replace />} />
-            <Route path="/logout" element={<Navigate to="/" replace />} />
-          </>
-        )}
+        <Route path="*" element={<Navigate to="/playlists" />} />
       </Routes>
     </div>
   );

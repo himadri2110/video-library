@@ -15,7 +15,7 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
-            to="/playlist"
+            to="/playlists"
             className={({ isActive }) => (isActive ? "active" : undefined)}
           >
             <i className="fa-solid fa-folder-plus"></i> Playlists

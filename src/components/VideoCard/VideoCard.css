@@ -1,11 +1,8 @@
 .video-card {
   margin: 0;
   background-color: inherit;
+  position: relative;
   cursor: pointer;
-}
-
-.video-card:hover {
-  box-shadow: var(--box-shadow);
 }
 
 .video-card,
@@ -43,6 +40,24 @@
   opacity: 0.95;
 }
 
-.video-card .card-content .moreOptionsMenu {
-  margin: 0 0.25rem;
+.video-card .more-options-modal {
+  position: absolute;
+  top: 11rem;
+  right: 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--bg-app);
+  box-shadow: var(--box-shadow-dark);
+  z-index: 1;
+}
+
+.video-card .more-options-modal li:hover {
+  color: var(--primary-color);
+}
+
+.video-card .more-options-modal i {
+  margin-right: 0.25rem;
 }

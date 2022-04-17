@@ -1,0 +1,65 @@
+.modal-open {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  cursor: default;
+}
+
+.modal-open .basic-card {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  z-index: 3;
+  width: 15rem;
+  box-shadow: var(--box-shadow-dark);
+}
+
+.modal-open .basic-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basic-card .card-header i {
+  color: var(--status-offline);
+}
+
+.basic-card .card-header i:hover {
+  color: inherit;
+}
+
+.modal-open .basic-card > * {
+  margin: 0.25rem 0;
+}
+
+.basic-card .default-placeholder {
+  color: var(--status-offline);
+  font-size: 0.9rem;
+}
+
+.modal-open button.text-primary {
+  text-align: left;
+  margin-top: 0.25rem;
+}
+
+.modal-open button.text-primary i {
+  margin-right: 0.25rem;
+}
+
+.basic-card .form-group .playlist-label {
+  width: 95%;
+  word-break: break-all;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+.form-group .playlist-label input {
+  margin-right: 0.5rem;
+}

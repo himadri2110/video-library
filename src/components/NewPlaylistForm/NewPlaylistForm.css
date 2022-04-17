@@ -1,0 +1,12 @@
+.new-playlist-form input {
+  margin: 0.25rem 0;
+}
+
+.new-playlist-action {
+  display: flex;
+  justify-content: center;
+}
+
+.new-playlist-action button {
+  margin: 0.25rem;
+}

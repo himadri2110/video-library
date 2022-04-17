@@ -7,4 +7,10 @@ const authActions = {
   SET_AUTH: "SET_AUTH",
 };
 
-export { videoActions, authActions };
+const playlistActions = {
+  GET_PLAYLISTS: "GET_PLAYLISTS",
+  ADD_VIDEO_TO_PLAYLIST: "ADD_VIDEO_TO_PLAYLIST",
+  DELETE_VIDEO_FROM_PLAYLIST: "DELETE_VIDEO_FROM_PLAYLIST",
+};
+
+export { videoActions, authActions, playlistActions };

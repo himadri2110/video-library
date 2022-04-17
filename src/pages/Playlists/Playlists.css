@@ -1,0 +1,17 @@
+.playlists-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
+  grid-template-rows: 220px;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.playlists-container .playlist-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlists-container .new-playlist {
+  border: 1px solid var(--bg-secondary);
+}
