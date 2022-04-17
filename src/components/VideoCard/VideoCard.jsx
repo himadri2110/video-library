@@ -1,5 +1,5 @@
 import "./VideoCard.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
 
@@ -9,8 +9,26 @@ const VideoCard = ({ video }) => {
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
 
+  const videoRef = useRef();
+
+  useEffect(() => {
+    const closeModal = (e) => {
+      if (
+        showMoreOptionsModal &&
+        videoRef.current &&
+        !videoRef.current.contains(e.target)
+      ) {
+        setShowMoreOptionsModal(false);
+      }
+    };
+
+    document.addEventListener("mousedown", closeModal);
+
+    return () => document.removeEventListener("mousedown", closeModal);
+  }, [showMoreOptionsModal]);
+
   return (
-    <div className="card-wrapper basic-card video-card">
+    <div className="card-wrapper basic-card video-card" ref={videoRef}>
       <div>
         <img src={videoImage(_id)} className="card-img" alt={title} />
       </div>
