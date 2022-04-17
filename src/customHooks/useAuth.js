@@ -6,7 +6,7 @@ import { authActions } from "reducers";
 
 const useAuth = () => {
   const location = useLocation();
-  const from = location.state?.from?.pathname;
+  const from = location.state?.from?.pathname || "/";
 
   const { authState, dispatchAuth, navigate } = useContext(AuthContext);
   const { SET_TOKEN, SET_AUTH } = authActions;

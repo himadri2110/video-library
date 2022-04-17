@@ -23,7 +23,7 @@ const AppRoutes = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/logout" element={<Logout />} />
 
-        <Route path="*" element={<Navigate to="/playlists" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );
