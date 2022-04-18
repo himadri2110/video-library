@@ -1,9 +1,13 @@
 import { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { AuthContext } from "contexts";
 import { loginService, signupService } from "services";
 import { authActions } from "reducers";
 
 const useAuth = () => {
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const { authState, dispatchAuth, navigate } = useContext(AuthContext);
   const { SET_TOKEN, SET_AUTH } = authActions;
 
@@ -14,9 +18,6 @@ const useAuth = () => {
       const { data, status } = await loginService(login.input);
 
       if (status === 200) {
-        localStorage.setItem("VL_isAuth", true);
-        localStorage.setItem("VL_token", data.encodedToken);
-
         dispatchAuth({
           type: SET_TOKEN,
           payload: { token: data.encodedToken },
@@ -26,7 +27,10 @@ const useAuth = () => {
           payload: { isAuth: true },
         });
 
-        navigate("/");
+        localStorage.setItem("VL_isAuth", true);
+        localStorage.setItem("VL_token", data.encodedToken);
+
+        navigate(from, { replace: true });
       }
     } catch (err) {
       setLogin({ ...login, error: err.response.data.errors[0] });
@@ -52,7 +56,7 @@ const useAuth = () => {
           payload: { isAuth: true },
         });
 
-        navigate("/");
+        navigate(from, { replace: true });
       }
     } catch (err) {
       setSignup({ ...signup, error: err.response.data.errors[0] });
@@ -69,6 +73,7 @@ const useAuth = () => {
   };
 
   return {
+    navigate,
     authState,
     dispatchAuth,
     loginHandler,

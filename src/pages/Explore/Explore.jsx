@@ -1,7 +1,7 @@
 import "./Explore.css";
-import { Sidebar } from "components";
-import { VideoCard } from "components/VideoCard/VideoCard";
+import { Sidebar, VideoCard } from "components";
 import { useVideos } from "contexts";
+
 const Explore = () => {
   const {
     videosState: { videos },
