@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { Sidebar, PlaylistModal } from "components";
 import { useVideos } from "contexts";
 import { videoThumbnail, creatorAvatar } from "utils/getVideoImages";
+import { useAuth } from "customHooks";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
@@ -12,6 +13,11 @@ const SingleVideo = () => {
   const {
     videosState: { videos },
   } = useVideos();
+
+  const {
+    authState: { isAuth },
+    navigate,
+  } = useAuth();
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
@@ -53,7 +59,9 @@ const SingleVideo = () => {
                 <button>
                   <i
                     className="fa-solid fa-folder-plus"
-                    onClick={() => setShowPlaylistModal(true)}
+                    onClick={() => {
+                      isAuth ? setShowPlaylistModal(true) : navigate("/login");
+                    }}
                   ></i>
                 </button>
               </div>

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
-import { usePlaylists } from "customHooks";
+import { usePlaylists, useAuth } from "customHooks";
 
 const VideoCard = ({
   video,
@@ -16,6 +16,11 @@ const VideoCard = ({
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
 
   const { deleteVideoFromPlaylist } = usePlaylists();
+
+  const {
+    authState: { isAuth },
+    navigate,
+  } = useAuth();
 
   const videoRef = useRef();
 
@@ -87,7 +92,7 @@ const VideoCard = ({
             </li>
             <li
               onClick={() => {
-                setShowPlaylistModal(true);
+                isAuth ? setShowPlaylistModal(true) : navigate("/login");
                 setShowMoreOptionsModal(false);
               }}
             >
