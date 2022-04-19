@@ -3,12 +3,19 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
+import { usePlaylists } from "customHooks";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({
+  video,
+  videoCardInPlaylist,
+  currentPlaylist: playlist,
+}) => {
   const { _id, title, creator, creatorAvatarId } = video;
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
+
+  const { deleteVideoFromPlaylist } = usePlaylists();
 
   const videoRef = useRef();
 
@@ -48,12 +55,28 @@ const VideoCard = ({ video }) => {
           <div className="card-creator">{creator}</div>
         </Link>
 
-        <button
-          className="more-options-menu"
-          onClick={() => setShowMoreOptionsModal((show) => !show)}
-        >
-          <i className="fa-solid fa-ellipsis-vertical"></i>
-        </button>
+        {videoCardInPlaylist ? null : (
+          <button
+            className="more-options-menu"
+            onClick={() => setShowMoreOptionsModal((show) => !show)}
+          >
+            <i className="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+        )}
+
+        {videoCardInPlaylist ? (
+          <div
+            className="playlist-action"
+            onClick={() =>
+              deleteVideoFromPlaylist({
+                videoInPlaylist: video,
+                playlist,
+              })
+            }
+          >
+            <i className="fa-solid fa-trash"></i>
+          </div>
+        ) : null}
 
         {showMoreOptionsModal ? (
           <ul className="more-options-modal">
