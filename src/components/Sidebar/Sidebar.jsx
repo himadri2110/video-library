@@ -7,7 +7,7 @@ const Sidebar = () => {
       <ul>
         <li>
           <NavLink
-            to="/"
+            to="/explore"
             className={({ isActive }) => (isActive ? "active" : undefined)}
           >
             <i className="fa-solid fa-compass"></i> Explore

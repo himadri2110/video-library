@@ -58,6 +58,7 @@
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .form-group .playlist-label input {

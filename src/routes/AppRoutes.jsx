@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { RequiresAuth } from "routes/RequiresAuth";
 import { Navbar } from "components";
-import { Explore, Playlists, Login, Logout, SignUp } from "pages";
+import { Explore, Playlists, SingleVideo, Login, Logout, SignUp } from "pages";
 
 const AppRoutes = () => {
   return (
@@ -11,14 +11,12 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Explore />} />
         <Route path="/explore" element={<Explore />} />
-        <Route
-          path="/playlists"
-          element={
-            <RequiresAuth>
-              <Playlists />
-            </RequiresAuth>
-          }
-        />
+        <Route path="/explore/:videoId" element={<SingleVideo />} />
+
+        <Route element={<RequiresAuth />}>
+          <Route path="/playlists" element={<Playlists />} />
+        </Route>
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/logout" element={<Logout />} />

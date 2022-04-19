@@ -1,5 +1,6 @@
 import "./VideoCard.css";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
 
@@ -29,9 +30,9 @@ const VideoCard = ({ video }) => {
 
   return (
     <div className="card-wrapper basic-card video-card" ref={videoRef}>
-      <div>
+      <Link to={`/explore/${_id}`}>
         <img src={videoImage(_id)} className="card-img" alt={title} />
-      </div>
+      </Link>
 
       <div className="card-content">
         <div className="card-avatar">
@@ -42,22 +43,24 @@ const VideoCard = ({ video }) => {
           />
         </div>
 
-        <div className="card-text">
+        <Link to={`/explore/${_id}`} className="card-text">
           <div className="card-heading">{title}</div>
           <div className="card-creator">{creator}</div>
-        </div>
+        </Link>
 
-        <div
+        <button
           className="more-options-menu"
           onClick={() => setShowMoreOptionsModal((show) => !show)}
         >
           <i className="fa-solid fa-ellipsis-vertical"></i>
-        </div>
+        </button>
 
         {showMoreOptionsModal ? (
           <ul className="more-options-modal">
             <li>
-              <i className="fa-solid fa-clock"></i> Save to Watch later
+              <button>
+                <i className="fa-solid fa-clock"></i> Save to Watch later
+              </button>
             </li>
             <li
               onClick={() => {
@@ -65,7 +68,9 @@ const VideoCard = ({ video }) => {
                 setShowMoreOptionsModal(false);
               }}
             >
-              <i className="fa-solid fa-folder-plus"></i> Save to Playlist
+              <button>
+                <i className="fa-solid fa-folder-plus"></i> Save to Playlist
+              </button>
             </li>
           </ul>
         ) : null}

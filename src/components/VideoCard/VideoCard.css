@@ -2,12 +2,15 @@
   margin: 0;
   background-color: inherit;
   position: relative;
-  cursor: pointer;
 }
 
 .video-card,
 .video-card .card-img {
   border-radius: 0;
+}
+
+.video-card .card-img {
+  cursor: pointer;
 }
 
 .video-card .card-content {
@@ -23,6 +26,7 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
+  cursor: pointer;
 }
 
 .video-card .card-heading {
