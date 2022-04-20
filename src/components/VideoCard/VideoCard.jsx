@@ -1,13 +1,26 @@
 import "./VideoCard.css";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
+import { usePlaylists, useAuth } from "customHooks";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({
+  video,
+  videoCardInPlaylist,
+  currentPlaylist: playlist,
+}) => {
   const { _id, title, creator, creatorAvatarId } = video;
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
+
+  const { deleteVideoFromPlaylist } = usePlaylists();
+
+  const {
+    authState: { isAuth },
+    navigate,
+  } = useAuth();
 
   const videoRef = useRef();
 
@@ -29,9 +42,9 @@ const VideoCard = ({ video }) => {
 
   return (
     <div className="card-wrapper basic-card video-card" ref={videoRef}>
-      <div>
+      <Link to={`/explore/${_id}`}>
         <img src={videoImage(_id)} className="card-img" alt={title} />
-      </div>
+      </Link>
 
       <div className="card-content">
         <div className="card-avatar">
@@ -42,30 +55,50 @@ const VideoCard = ({ video }) => {
           />
         </div>
 
-        <div className="card-text">
+        <Link to={`/explore/${_id}`} className="card-text">
           <div className="card-heading">{title}</div>
           <div className="card-creator">{creator}</div>
-        </div>
+        </Link>
 
-        <div
-          className="more-options-menu"
-          onClick={() => setShowMoreOptionsModal((show) => !show)}
-        >
-          <i className="fa-solid fa-ellipsis-vertical"></i>
-        </div>
+        {videoCardInPlaylist ? null : (
+          <button
+            className="more-options-menu"
+            onClick={() => setShowMoreOptionsModal((show) => !show)}
+          >
+            <i className="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+        )}
+
+        {videoCardInPlaylist ? (
+          <div
+            className="playlist-action"
+            onClick={() =>
+              deleteVideoFromPlaylist({
+                videoInPlaylist: video,
+                playlist,
+              })
+            }
+          >
+            <i className="fa-solid fa-trash"></i>
+          </div>
+        ) : null}
 
         {showMoreOptionsModal ? (
           <ul className="more-options-modal">
             <li>
-              <i className="fa-solid fa-clock"></i> Save to Watch later
+              <button>
+                <i className="fa-solid fa-clock"></i> Save to Watch later
+              </button>
             </li>
             <li
               onClick={() => {
-                setShowPlaylistModal(true);
+                isAuth ? setShowPlaylistModal(true) : navigate("/login");
                 setShowMoreOptionsModal(false);
               }}
             >
-              <i className="fa-solid fa-folder-plus"></i> Save to Playlist
+              <button>
+                <i className="fa-solid fa-folder-plus"></i> Save to Playlist
+              </button>
             </li>
           </ul>
         ) : null}
