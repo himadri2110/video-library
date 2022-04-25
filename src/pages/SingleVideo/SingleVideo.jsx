@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { Sidebar, PlaylistModal } from "components";
 import { useVideos } from "contexts";
 import { videoThumbnail, creatorAvatar } from "utils/getVideoImages";
-import { useAuth, useLikes } from "customHooks";
+import { useAuth, useLikes, useWatchLater } from "customHooks";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
@@ -26,7 +26,17 @@ const SingleVideo = () => {
     removeVideoFromLikes,
   } = useLikes();
 
+  const {
+    watchLaterState: { watchLater },
+    addToWatchLater,
+    removeFromWatchLater,
+  } = useWatchLater();
+
   const currentVideo = videos?.find((video) => video._id === videoId);
+
+  const videoInWatchLater = watchLater.find(
+    (watchLaterVideo) => watchLaterVideo._id === currentVideo._id
+  );
 
   const videoInLikes = likes.find((like) => like._id === currentVideo._id);
 
@@ -73,8 +83,20 @@ const SingleVideo = () => {
                   ></i>
                 </button>
 
-                <button>
-                  <i className="fa-solid fa-clock"></i>
+                <button
+                  onClick={() =>
+                    isAuth
+                      ? videoInWatchLater
+                        ? removeFromWatchLater({ video: currentVideo })
+                        : addToWatchLater({ video: currentVideo })
+                      : navigate("/login")
+                  }
+                >
+                  <i
+                    className={`fa-solid fa-clock ${
+                      isAuth ? (videoInWatchLater ? "in-like" : null) : null
+                    }`}
+                  ></i>
                 </button>
 
                 <button
