@@ -13,4 +13,18 @@ const playlistActions = {
   DELETE_VIDEO_FROM_PLAYLIST: "DELETE_VIDEO_FROM_PLAYLIST",
 };
 
-export { videoActions, authActions, playlistActions };
+const watchLaterActions = {
+  GET_WATCHLATER: "GET_WATCHLATER",
+};
+
+const likesActions = {
+  GET_LIKES: "GET_LIKES",
+};
+
+export {
+  videoActions,
+  authActions,
+  playlistActions,
+  watchLaterActions,
+  likesActions,
+};

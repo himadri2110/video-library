@@ -5,3 +5,5 @@ export { Logout } from "./Authentication/Logout/Logout";
 export { Playlists } from "./Playlists/Playlists";
 export { SingleVideo } from "./SingleVideo/SingleVideo";
 export { SinglePlaylist } from "./SinglePlaylist/SinglePlaylist";
+export { WatchLater } from "./WatchLater/WatchLater";
+export { Likes } from "./Likes/Likes";
