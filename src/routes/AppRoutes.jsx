@@ -9,6 +9,7 @@ import {
   Login,
   Logout,
   SignUp,
+  WatchLater,
 } from "pages";
 
 const AppRoutes = () => {
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Route element={<RequiresAuth />}>
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
+          <Route path="/watchlater" element={<WatchLater />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

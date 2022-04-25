@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
-import { usePlaylists, useAuth } from "customHooks";
+import { usePlaylists, useAuth, useWatchLater } from "customHooks";
 
 const VideoCard = ({
   video,
@@ -16,6 +16,15 @@ const VideoCard = ({
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
 
   const { deleteVideoFromPlaylist } = usePlaylists();
+  const {
+    watchLaterState: { watchLater },
+    addToWatchLater,
+    removeFromWatchLater,
+  } = useWatchLater();
+
+  const videoInWatchLater = watchLater.find(
+    (watchLaterVideo) => watchLaterVideo._id === video._id
+  );
 
   const {
     authState: { isAuth },
@@ -85,9 +94,17 @@ const VideoCard = ({
 
         {showMoreOptionsModal ? (
           <ul className="more-options-modal">
-            <li>
+            <li
+              onClick={() => {
+                videoInWatchLater
+                  ? removeFromWatchLater({ video })
+                  : addToWatchLater({ video });
+                setShowMoreOptionsModal(false);
+              }}
+            >
               <button>
-                <i className="fa-solid fa-clock"></i> Save to Watch later
+                <i className="fa-solid fa-clock"></i>{" "}
+                {videoInWatchLater ? "Remove from" : "Save to"} Watch later
               </button>
             </li>
             <li

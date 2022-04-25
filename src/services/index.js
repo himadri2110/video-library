@@ -7,3 +7,8 @@ export {
   deletePlaylistService,
   deleteVideoFromPlaylistService,
 } from "./playlistsServices";
+export {
+  getWatchLaterService,
+  addToWatchLaterService,
+  removeFromWatchLaterService,
+} from "./watchLaterServices";
