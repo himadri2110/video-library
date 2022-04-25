@@ -96,15 +96,21 @@ const VideoCard = ({
           <ul className="more-options-modal">
             <li
               onClick={() => {
-                videoInWatchLater
-                  ? removeFromWatchLater({ video })
-                  : addToWatchLater({ video });
+                isAuth
+                  ? videoInWatchLater
+                    ? removeFromWatchLater({ video })
+                    : addToWatchLater({ video })
+                  : navigate("/login");
                 setShowMoreOptionsModal(false);
               }}
             >
               <button>
                 <i className="fa-solid fa-clock"></i>{" "}
-                {videoInWatchLater ? "Remove from" : "Save to"} Watch later
+                {isAuth
+                  ? videoInWatchLater
+                    ? "Remove from Watch later"
+                    : "Save to Watch later"
+                  : "Save to Watch later"}
               </button>
             </li>
             <li

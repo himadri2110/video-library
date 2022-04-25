@@ -59,14 +59,16 @@ const SingleVideo = () => {
               <div className="video-actions">
                 <button
                   onClick={() =>
-                    videoInLikes
-                      ? removeVideoFromLikes({ currentVideo })
-                      : addVideoToLikes({ currentVideo })
+                    isAuth
+                      ? videoInLikes
+                        ? removeVideoFromLikes({ currentVideo })
+                        : addVideoToLikes({ currentVideo })
+                      : navigate("/login")
                   }
                 >
                   <i
                     className={`fa-solid fa-thumbs-up ${
-                      videoInLikes ? "in-like" : null
+                      isAuth ? (videoInLikes ? "in-like" : null) : null
                     }`}
                   ></i>
                 </button>
