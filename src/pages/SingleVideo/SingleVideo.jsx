@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import { Sidebar, PlaylistModal } from "components";
 import { useVideos } from "contexts";
 import { videoThumbnail, creatorAvatar } from "utils/getVideoImages";
-import { useAuth } from "customHooks";
+import { useAuth, useLikes } from "customHooks";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
   const {
     videosState: { videos },
@@ -19,9 +20,15 @@ const SingleVideo = () => {
     navigate,
   } = useAuth();
 
-  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+  const {
+    likesState: { likes },
+    addVideoToLikes,
+    removeVideoFromLikes,
+  } = useLikes();
 
   const currentVideo = videos?.find((video) => video._id === videoId);
+
+  const videoInLikes = likes.find((like) => like._id === currentVideo._id);
 
   return (
     <section className="main-section">
@@ -50,19 +57,30 @@ const SingleVideo = () => {
               </div>
 
               <div className="video-actions">
-                <button>
-                  <i className="fa-solid fa-thumbs-up"></i>
+                <button
+                  onClick={() =>
+                    videoInLikes
+                      ? removeVideoFromLikes({ currentVideo })
+                      : addVideoToLikes({ currentVideo })
+                  }
+                >
+                  <i
+                    className={`fa-solid fa-thumbs-up ${
+                      videoInLikes ? "in-like" : null
+                    }`}
+                  ></i>
                 </button>
+
                 <button>
                   <i className="fa-solid fa-clock"></i>
                 </button>
-                <button>
-                  <i
-                    className="fa-solid fa-folder-plus"
-                    onClick={() => {
-                      isAuth ? setShowPlaylistModal(true) : navigate("/login");
-                    }}
-                  ></i>
+
+                <button
+                  onClick={() => {
+                    isAuth ? setShowPlaylistModal(true) : navigate("/login");
+                  }}
+                >
+                  <i className="fa-solid fa-folder-plus"></i>
                 </button>
               </div>
             </div>

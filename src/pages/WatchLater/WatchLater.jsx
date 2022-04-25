@@ -10,7 +10,7 @@ const WatchLater = () => {
     <section className="main-section">
       <Sidebar />
 
-      <div className="component-container playlists-container">
+      <div className="component-container">
         {watchLater.length ? (
           watchLater.map((watchLater) => (
             <VideoCard video={watchLater} key={watchLater._id} />

@@ -17,4 +17,14 @@ const watchLaterActions = {
   GET_WATCHLATER: "GET_WATCHLATER",
 };
 
-export { videoActions, authActions, playlistActions, watchLaterActions };
+const likesActions = {
+  GET_LIKES: "GET_LIKES",
+};
+
+export {
+  videoActions,
+  authActions,
+  playlistActions,
+  watchLaterActions,
+  likesActions,
+};

@@ -1,5 +1,7 @@
 export { getVideoService } from "./videoServices";
+
 export { loginService, signupService } from "./authServices";
+
 export {
   getPlaylistsService,
   addNewPlaylistService,
@@ -7,8 +9,15 @@ export {
   deletePlaylistService,
   deleteVideoFromPlaylistService,
 } from "./playlistsServices";
+
 export {
   getWatchLaterService,
   addToWatchLaterService,
   removeFromWatchLaterService,
 } from "./watchLaterServices";
+
+export {
+  getLikesService,
+  addLikedVideoService,
+  removeLikedVideoService,
+} from "./likeServices";

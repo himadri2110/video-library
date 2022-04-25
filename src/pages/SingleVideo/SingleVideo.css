@@ -31,6 +31,10 @@
   color: var(--text-secondary);
 }
 
+.video-details .video-actions .in-like {
+  color: var(--primary-color);
+}
+
 .video-details .video-subheader {
   display: flex;
   justify-content: space-between;
