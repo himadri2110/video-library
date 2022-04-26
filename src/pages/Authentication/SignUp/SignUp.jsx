@@ -48,7 +48,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Type here..."
-                name="firstname"
+                name="firstName"
                 value={signup.input.firstname || ""}
                 onChange={signupInputHandler}
                 required
@@ -62,7 +62,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Type here..."
-                name="lastname"
+                name="lastName"
                 value={signup.input.lastname || ""}
                 onChange={signupInputHandler}
                 required

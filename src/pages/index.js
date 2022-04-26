@@ -8,3 +8,4 @@ export { SinglePlaylist } from "./SinglePlaylist/SinglePlaylist";
 export { WatchLater } from "./WatchLater/WatchLater";
 export { Likes } from "./Likes/Likes";
 export { History } from "./History/History";
+export { UserProfile } from "./UserProfile/UserProfile";

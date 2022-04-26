@@ -38,17 +38,9 @@
   background-color: var(--text-color);
 }
 
-.nav-bar .nav-primary,
-.nav-action .login span,
-.nav-action .logout span {
+.nav-bar .nav-primary {
   padding-left: 0.5rem;
   font-size: 1rem;
-}
-
-.nav-action .login,
-.nav-action .logout {
-  display: inline-flex;
-  align-items: center;
 }
 
 /* MEDIA QUERIES */
@@ -56,10 +48,6 @@
   .nav-bar .nav-search {
     flex-grow: initial;
     order: initial;
-  }
-
-  .nav-action a.icon {
-    display: inline-flex;
   }
 }
 
@@ -71,11 +59,6 @@
   .nav-bar > * {
     margin: 0.25rem 0;
     font-size: 80%;
-  }
-
-  .nav-action .login span,
-  .nav-action .logout span {
-    display: none;
   }
 }
 
@@ -96,9 +79,5 @@
 
   .nav-bar .nav-search input {
     width: 100%;
-  }
-
-  .nav-action a {
-    margin: 0 0 0 1rem;
   }
 }

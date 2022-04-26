@@ -6,7 +6,6 @@ import { useAuth } from "customHooks";
 const Navbar = () => {
   const {
     authState: { isAuth },
-    logoutHandler,
   } = useAuth();
 
   return (
@@ -26,19 +25,12 @@ const Navbar = () => {
         </Link>
 
         {isAuth ? (
-          <Link
-            to="/logout"
-            className="icon logout"
-            title="Logout"
-            onClick={logoutHandler}
-          >
-            <i className="fa-solid fa-sign-out"></i>
-            <span>Logout</span>
+          <Link to="/profile" title="Profile">
+            <i className="fa-solid fa-user"></i>
           </Link>
         ) : (
-          <Link to="/login" className="icon login" title="Login">
+          <Link to="/login" title="Login">
             <i className="fa-solid fa-sign-in"></i>
-            <span>Login</span>
           </Link>
         )}
       </div>
