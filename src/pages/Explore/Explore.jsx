@@ -1,4 +1,3 @@
-import "./Explore.css";
 import { Sidebar, VideoCard } from "components";
 import { useVideos } from "contexts";
 
@@ -11,7 +10,7 @@ const Explore = () => {
     <section className="main-section">
       <Sidebar />
 
-      <div className="component-container videos-container">
+      <div className="component-container route-container">
         {videos.map((video) => (
           <VideoCard video={video} key={video._id} />
         ))}
