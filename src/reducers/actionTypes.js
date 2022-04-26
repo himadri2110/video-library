@@ -21,10 +21,15 @@ const likesActions = {
   GET_LIKES: "GET_LIKES",
 };
 
+const historyActions = {
+  GET_HISTORY: "GET_HISTORY",
+};
+
 export {
   videoActions,
   authActions,
   playlistActions,
   watchLaterActions,
   likesActions,
+  historyActions,
 };

@@ -10,13 +10,13 @@ const Likes = () => {
     <section className="main-section">
       <Sidebar />
 
-      <div className="component-container playlists-container">
+      <div className="component-container">
         {likes.length ? (
           likes.map((likedVideo) => (
             <VideoCard video={likedVideo} key={likedVideo._id} />
           ))
         ) : (
-          <p>No liked videos</p>
+          <p className="text-center">No liked videos</p>
         )}
       </div>
     </section>

@@ -16,7 +16,7 @@ const WatchLater = () => {
             <VideoCard video={watchLater} key={watchLater._id} />
           ))
         ) : (
-          <p>No videos in Watchlater</p>
+          <p className="text-center">No videos in Watchlater</p>
         )}
       </div>
     </section>

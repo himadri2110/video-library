@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
 import { PlaylistModal } from "components";
-import { usePlaylists, useAuth, useWatchLater } from "customHooks";
+import { usePlaylists, useAuth, useWatchLater, useHistory } from "customHooks";
 
 const VideoCard = ({
   video,
@@ -16,6 +16,7 @@ const VideoCard = ({
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
 
   const { deleteVideoFromPlaylist } = usePlaylists();
+
   const {
     watchLaterState: { watchLater },
     addToWatchLater,
@@ -24,6 +25,15 @@ const VideoCard = ({
 
   const videoInWatchLater = watchLater.find(
     (watchLaterVideo) => watchLaterVideo._id === video._id
+  );
+
+  const {
+    historyState: { history },
+    removeVideoFromHistory,
+  } = useHistory();
+
+  const videoInHistory = history.find(
+    (historyVideo) => historyVideo._id === video._id
   );
 
   const {
@@ -113,6 +123,7 @@ const VideoCard = ({
                   : "Save to Watch later"}
               </button>
             </li>
+
             <li
               onClick={() => {
                 isAuth ? setShowPlaylistModal(true) : navigate("/login");
@@ -123,6 +134,19 @@ const VideoCard = ({
                 <i className="fa-solid fa-folder-plus"></i> Save to Playlist
               </button>
             </li>
+
+            {videoInHistory ? (
+              <li
+                onClick={() => {
+                  removeVideoFromHistory({ video });
+                  setShowMoreOptionsModal(false);
+                }}
+              >
+                <button>
+                  <i className="fa-solid fa-ban"></i> Remove from History
+                </button>
+              </li>
+            ) : null}
           </ul>
         ) : null}
       </div>

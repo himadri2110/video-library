@@ -11,6 +11,7 @@ import {
   SignUp,
   WatchLater,
   Likes,
+  History,
 } from "pages";
 
 const AppRoutes = () => {
@@ -28,6 +29,7 @@ const AppRoutes = () => {
           <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
           <Route path="/watchlater" element={<WatchLater />} />
           <Route path="/likes" element={<Likes />} />
+          <Route path="/history" element={<History />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

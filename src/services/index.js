@@ -21,3 +21,10 @@ export {
   addLikedVideoService,
   removeLikedVideoService,
 } from "./likeServices";
+
+export {
+  getHistoryService,
+  addToHistoryService,
+  removeFromHistoryService,
+  clearHistoryService,
+} from "./historyServices";
