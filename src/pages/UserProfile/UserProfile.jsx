@@ -1,6 +1,7 @@
 import "./UserProfile.css";
 import { Sidebar } from "components";
 import { useAuth } from "customHooks";
+import { profileAvatar } from "utils/getProfileAvatar";
 
 const UserProfile = () => {
   const { logoutHandler } = useAuth();
@@ -15,7 +16,7 @@ const UserProfile = () => {
       <div className="component-container profile-container">
         <div className="profile-details">
           <img
-            src={`https://avatars.dicebear.com/api/initials/${user.firstName}%20${user.lastName}.svg?b=%238553fa&r=50&size=80&fontSize=40`}
+            src={profileAvatar(user.firstName, user.lastName)}
             alt={fullName}
           />
 
