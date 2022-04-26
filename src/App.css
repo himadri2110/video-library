@@ -37,6 +37,27 @@ section.main-section {
   width: 100%;
 }
 
+/* Route Containers */
+.route-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-rows: 290px;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.route-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.route-action {
+  font-size: 0.9rem;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

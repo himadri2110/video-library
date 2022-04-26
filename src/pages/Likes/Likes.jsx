@@ -10,13 +10,22 @@ const Likes = () => {
     <section className="main-section">
       <Sidebar />
 
-      <div className="component-container playlists-container">
+      <div className="component-container">
         {likes.length ? (
-          likes.map((likedVideo) => (
-            <VideoCard video={likedVideo} key={likedVideo._id} />
-          ))
+          <>
+            <div className="route-header">
+              <h4>Your likes</h4>
+              <span className="route-action">{likes.length} videos</span>
+            </div>
+
+            <div className="route-container">
+              {likes.map((likedVideo) => (
+                <VideoCard video={likedVideo} key={likedVideo._id} />
+              ))}
+            </div>
+          </>
         ) : (
-          <p>No liked videos</p>
+          <p className="text-center">No liked videos</p>
         )}
       </div>
     </section>

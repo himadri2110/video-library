@@ -21,27 +21,29 @@ const SinglePlaylist = () => {
       <Sidebar />
 
       <div className="component-container single-playlist">
-        <div className="playlist-header">
-          <h2 className="playlist-title">{currentPlaylist.title}</h2>
-          <span className="playlist-length">
-            {currentPlaylist.videos.length} videos
-          </span>
-        </div>
+        {currentPlaylist?.videos ? (
+          <>
+            <div className="playlist-header">
+              <h2 className="playlist-title">{currentPlaylist.title}</h2>
+              <span className="playlist-length">
+                {currentPlaylist.videos.length} videos
+              </span>
+            </div>
 
-        <div className="playlist-videos">
-          {currentPlaylist.videos.length ? (
-            currentPlaylist.videos.map((video) => (
-              <VideoCard
-                video={video}
-                key={video._id}
-                videoCardInPlaylist={videoCardInPlaylist}
-                currentPlaylist={currentPlaylist}
-              />
-            ))
-          ) : (
-            <p>No videos in Playlist</p>
-          )}
-        </div>
+            <div className="playlist-videos">
+              {currentPlaylist.videos.map((video) => (
+                <VideoCard
+                  video={video}
+                  key={video._id}
+                  videoCardInPlaylist={videoCardInPlaylist}
+                  currentPlaylist={currentPlaylist}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <p>No videos in Playlist</p>
+        )}
       </div>
     </section>
   );

@@ -29,6 +29,7 @@ const useAuth = () => {
 
         localStorage.setItem("VL_isAuth", true);
         localStorage.setItem("VL_token", data.encodedToken);
+        localStorage.setItem("VL_user", JSON.stringify(data.foundUser));
 
         navigate(from, { replace: true });
       }
@@ -46,6 +47,7 @@ const useAuth = () => {
       if (status === 201) {
         localStorage.setItem("VL_isAuth", true);
         localStorage.setItem("VL_token", data.encodedToken);
+        localStorage.setItem("VL_user", JSON.stringify(data.createdUser));
 
         dispatchAuth({
           type: SET_TOKEN,
@@ -65,11 +67,13 @@ const useAuth = () => {
 
   const logoutHandler = () => {
     localStorage.removeItem("VL_token");
+    localStorage.removeItem("VL_user");
     localStorage.setItem("VL_isAuth", false);
     dispatchAuth({
       type: SET_AUTH,
       payload: { isAuth: false },
     });
+    navigate("/logout");
   };
 
   return {

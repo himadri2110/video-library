@@ -1,11 +1,11 @@
 import "./SingleVideo.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { Sidebar, PlaylistModal } from "components";
 import { useVideos } from "contexts";
 import { videoThumbnail, creatorAvatar } from "utils/getVideoImages";
-import { useAuth, useLikes, useWatchLater } from "customHooks";
+import { useAuth, useHistory, useLikes, useWatchLater } from "customHooks";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
@@ -32,13 +32,30 @@ const SingleVideo = () => {
     removeFromWatchLater,
   } = useWatchLater();
 
+  const {
+    historyState: { history },
+    addVideoToHistory,
+  } = useHistory();
+
   const currentVideo = videos?.find((video) => video._id === videoId);
 
   const videoInWatchLater = watchLater.find(
-    (watchLaterVideo) => watchLaterVideo._id === currentVideo._id
+    (watchLaterVideo) => watchLaterVideo?._id === currentVideo._id
   );
 
-  const videoInLikes = likes.find((like) => like._id === currentVideo._id);
+  const videoInLikes = likes?.find((like) => like._id === currentVideo._id);
+
+  useEffect(() => {
+    if (isAuth) {
+      const videoInHistory = history?.find(
+        (historyVideo) => historyVideo._id === currentVideo._id
+      );
+
+      if (videoInHistory) {
+        addVideoToHistory({ video: currentVideo });
+      }
+    }
+  }, []);
 
   return (
     <section className="main-section">
@@ -49,6 +66,7 @@ const SingleVideo = () => {
           <div className="video-thumbnail">
             <ReactPlayer
               url={videoThumbnail(videoId)}
+              playing={true}
               width="100%"
               height="100%"
             />
