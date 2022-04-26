@@ -40,18 +40,20 @@ const SingleVideo = () => {
   const currentVideo = videos?.find((video) => video._id === videoId);
 
   const videoInWatchLater = watchLater.find(
-    (watchLaterVideo) => watchLaterVideo._id === currentVideo._id
+    (watchLaterVideo) => watchLaterVideo?._id === currentVideo._id
   );
 
-  const videoInLikes = likes.find((like) => like._id === currentVideo._id);
-
-  const videoInHistory = history.find(
-    (historyVideo) => historyVideo._id === currentVideo._id
-  );
+  const videoInLikes = likes?.find((like) => like._id === currentVideo._id);
 
   useEffect(() => {
-    if (isAuth && !videoInHistory) {
-      addVideoToHistory({ video: currentVideo });
+    if (isAuth) {
+      const videoInHistory = history?.find(
+        (historyVideo) => historyVideo._id === currentVideo._id
+      );
+
+      if (videoInHistory) {
+        addVideoToHistory({ video: currentVideo });
+      }
     }
   }, []);
 
