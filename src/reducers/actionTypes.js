@@ -2,6 +2,7 @@ const videoActions = {
   GET_VIDEOS: "GET_VIDEOS",
   SET_SEARCH_TEXT: "SET_SEARCH_TEXT",
   SET_FILTER_TEXT: "SET_FILTER_TEXT",
+  SET_SORT_BY: "SET_SORT_BY",
 };
 
 const authActions = {

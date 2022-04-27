@@ -41,7 +41,7 @@ section.main-section {
 .route-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-template-rows: 290px;
+  grid-template-rows: 320px;
   justify-content: space-around;
   gap: 1rem;
 }

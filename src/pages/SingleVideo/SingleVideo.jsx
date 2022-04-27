@@ -51,7 +51,7 @@ const SingleVideo = () => {
         (historyVideo) => historyVideo._id === currentVideo._id
       );
 
-      if (videoInHistory) {
+      if (!videoInHistory) {
         addVideoToHistory({ video: currentVideo });
       }
     }

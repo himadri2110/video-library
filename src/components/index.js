@@ -6,3 +6,4 @@ export { PlaylistModal } from "./PlaylistModal/PlaylistModal";
 export { PlaylistCard } from "./PlaylistCard/PlaylistCard";
 export { NewPlaylistForm } from "./NewPlaylistForm/NewPlaylistForm";
 export { Filters } from "./Filters/Filters";
+export { Sort } from "./Sort/Sort";

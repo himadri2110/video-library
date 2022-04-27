@@ -1,7 +1,8 @@
 import "./VideoCard.css";
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { videoImage, creatorAvatar } from "utils/getVideoImages";
+import { getTrimmedViewCount } from "utils/getTrimmedViewCount";
 import { PlaylistModal } from "components";
 import { usePlaylists, useAuth, useWatchLater, useHistory } from "customHooks";
 
@@ -10,7 +11,8 @@ const VideoCard = ({
   videoCardInPlaylist,
   currentPlaylist: playlist,
 }) => {
-  const { _id, title, creator, creatorAvatarId } = video;
+  const { _id, title, creator, creatorAvatarId, viewCount, releaseDate } =
+    video;
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
@@ -40,6 +42,8 @@ const VideoCard = ({
     authState: { isAuth },
     navigate,
   } = useAuth();
+
+  const { pathname } = useLocation();
 
   const videoRef = useRef();
 
@@ -77,6 +81,12 @@ const VideoCard = ({
         <Link to={`/explore/${_id}`} className="card-text">
           <div className="card-heading">{title}</div>
           <div className="card-creator">{creator}</div>
+          {pathname === "/explore" ? (
+            <div className="card-numbers">
+              <span>{getTrimmedViewCount(viewCount)} views</span>·
+              <span>{releaseDate}</span>
+            </div>
+          ) : null}
         </Link>
 
         {videoCardInPlaylist ? null : (

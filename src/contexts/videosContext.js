@@ -11,6 +11,7 @@ const VideosProvider = ({ children }) => {
     videos: [],
     searchText: "",
     filterText: "All",
+    sortBy: "",
   });
 
   useEffect(() => {
