@@ -5,3 +5,4 @@ export { SearchBar } from "./SearchBar/SearchBar";
 export { PlaylistModal } from "./PlaylistModal/PlaylistModal";
 export { PlaylistCard } from "./PlaylistCard/PlaylistCard";
 export { NewPlaylistForm } from "./NewPlaylistForm/NewPlaylistForm";
+export { Filters } from "./Filters/Filters";

@@ -1,0 +1,21 @@
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.filter-chips button {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1.2rem;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  box-shadow: var(--box-shadow-light);
+}
+
+.filter-chips .active-filter {
+  background-color: var(--primary-color);
+  color: var(--bg-app);
+}
