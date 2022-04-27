@@ -1,6 +1,6 @@
 import "./PlaylistCard.css";
 import { Link } from "react-router-dom";
-import { videoImage } from "utils/getVideoImages";
+import { videoImage } from "utils";
 import { usePlaylists } from "customHooks";
 
 const PlaylistCard = ({ playlist }) => {

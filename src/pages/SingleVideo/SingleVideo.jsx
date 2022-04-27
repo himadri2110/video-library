@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { Sidebar, PlaylistModal } from "components";
 import { useVideos } from "contexts";
-import { videoThumbnail, creatorAvatar } from "utils/getVideoImages";
+import { videoThumbnail, creatorAvatar } from "utils";
 import { useAuth, useHistory, useLikes, useWatchLater } from "customHooks";
 
 const SingleVideo = () => {

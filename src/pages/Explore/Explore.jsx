@@ -1,9 +1,9 @@
 import "./Explore.css";
 import { Filters, Sidebar, Sort, VideoCard } from "components";
 import { useVideos } from "contexts";
-import { getSearchedVideos } from "utils/getSearchedVideos";
-import { filterByCategory } from "utils/filterByCategory";
-import { sortByDate } from "utils/sortByDate";
+import { getSearchedVideos } from "utils";
+import { filterByCategory } from "utils";
+import { sortByDate } from "utils";
 
 const Explore = () => {
   const {
