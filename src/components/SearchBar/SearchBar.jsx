@@ -8,7 +8,7 @@ const SearchBar = () => {
   const { navigate } = useAuth();
   const { dispatchVideo } = useVideos();
 
-  const { SET_SEARCH_TEXT, SET_FILTER_TEXT } = videoActions;
+  const { SET_SEARCH_TEXT, SET_FILTER_TEXT, SET_SORT_BY } = videoActions;
 
   const debounce = (fn, delay) => {
     let timer = 0;
@@ -32,6 +32,10 @@ const SearchBar = () => {
     dispatchVideo({
       type: SET_FILTER_TEXT,
       payload: { filterText: "All" },
+    });
+    dispatchVideo({
+      type: SET_SORT_BY,
+      payload: { sortBy: "" },
     });
     dispatchVideo({
       type: SET_SEARCH_TEXT,

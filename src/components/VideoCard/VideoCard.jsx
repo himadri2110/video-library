@@ -1,8 +1,7 @@
 import "./VideoCard.css";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { videoImage, creatorAvatar } from "utils";
-import { getTrimmedViewCount } from "utils";
+import { videoImage, creatorAvatar, getTrimmedViewCount } from "utils";
 import { PlaylistModal } from "components";
 import { usePlaylists, useAuth, useWatchLater, useHistory } from "customHooks";
 
