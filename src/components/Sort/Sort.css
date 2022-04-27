@@ -1,0 +1,26 @@
+.sort-container {
+  position: relative;
+}
+
+.sort-container .sort-btn i {
+  margin-left: 0.25rem;
+}
+
+.sort-modal {
+  width: max-content;
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  z-index: 1;
+  background-color: var(--bg-app);
+  padding: 0.5rem 0.75rem;
+  box-shadow: var(--box-shadow-dark);
+}
+
+.sort-modal label {
+  cursor: pointer;
+}
+
+.sort-modal input {
+  margin-right: 0.5rem;
+}

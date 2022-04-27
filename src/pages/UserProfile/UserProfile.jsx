@@ -1,7 +1,7 @@
 import "./UserProfile.css";
 import { Sidebar } from "components";
 import { useAuth } from "customHooks";
-import { profileAvatar } from "utils/getProfileAvatar";
+import { getProfileAvatar } from "utils";
 
 const UserProfile = () => {
   const { logoutHandler } = useAuth();
@@ -16,7 +16,7 @@ const UserProfile = () => {
       <div className="component-container profile-container">
         <div className="profile-details">
           <img
-            src={profileAvatar(user.firstName, user.lastName)}
+            src={getProfileAvatar(user.firstName, user.lastName)}
             alt={fullName}
           />
 

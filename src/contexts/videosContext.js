@@ -9,6 +9,9 @@ const VideosContext = createContext();
 const VideosProvider = ({ children }) => {
   const [videosState, dispatchVideo] = useReducer(videosReducer, {
     videos: [],
+    searchText: "",
+    filterText: "All",
+    sortBy: "",
   });
 
   useEffect(() => {

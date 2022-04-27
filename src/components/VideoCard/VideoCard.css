@@ -39,9 +39,15 @@
   overflow: hidden;
 }
 
-.video-card .card-creator {
+.video-card .card-creator,
+.video-card .card-numbers {
   font-size: 0.8rem;
   opacity: 0.95;
+}
+
+.video-card .card-numbers {
+  display: flex;
+  gap: 0.25rem;
 }
 
 .video-card .more-options-modal {
