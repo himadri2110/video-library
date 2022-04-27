@@ -2,7 +2,7 @@ import "./Explore.css";
 import { Filters, Sidebar, Sort, VideoCard } from "components";
 import { useVideos } from "contexts";
 import { getSearchedVideos } from "utils/getSearchedVideos";
-import { getFilteredVideos } from "utils/getFilteredVideos";
+import { filterByCategory } from "utils/filterByCategory";
 import { sortByDate } from "utils/sortByDate";
 
 const Explore = () => {
@@ -11,7 +11,7 @@ const Explore = () => {
   } = useVideos();
 
   const searchedVideos = getSearchedVideos(videos, searchText.trim());
-  const filteredVideos = getFilteredVideos(searchedVideos, filterText);
+  const filteredVideos = filterByCategory(searchedVideos, filterText);
   const sortedVideos = sortByDate(filteredVideos, sortBy);
 
   return (
