@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "contexts";
 import { loginService, signupService } from "services";
 import { authActions } from "reducers";
@@ -9,12 +10,14 @@ const useAuth = () => {
   const from = location.state?.from?.pathname || "/";
 
   const { authState, dispatchAuth, navigate } = useContext(AuthContext);
-  const { SET_TOKEN, SET_AUTH } = authActions;
+  const { SET_TOKEN, SET_AUTH, SET_LOADING } = authActions;
 
   const loginHandler = async (e, login, setLogin) => {
     e.preventDefault();
 
     try {
+      dispatchAuth({ type: SET_LOADING, payload: true });
+
       const { data, status } = await loginService(login.input);
 
       if (status === 200) {
@@ -31,10 +34,16 @@ const useAuth = () => {
         localStorage.setItem("VL_token", data.encodedToken);
         localStorage.setItem("VL_user", JSON.stringify(data.foundUser));
 
+        toast.success(`Welcome back, ${data.foundUser.firstName}!`, {
+          icon: "👋",
+        });
+
         navigate(from, { replace: true });
       }
     } catch (err) {
       setLogin({ ...login, error: err.response.data.errors[0] });
+    } finally {
+      dispatchAuth({ type: SET_LOADING, payload: false });
     }
   };
 
@@ -42,6 +51,8 @@ const useAuth = () => {
     e.preventDefault();
 
     try {
+      dispatchAuth({ type: SET_LOADING, payload: true });
+
       const { data, status } = await signupService(signup.input);
 
       if (status === 201) {
@@ -58,10 +69,16 @@ const useAuth = () => {
           payload: { isAuth: true },
         });
 
+        toast.success(`Hi, ${data.createdUser.firstName}!`, {
+          icon: "👋",
+        });
+
         navigate(from, { replace: true });
       }
     } catch (err) {
       setSignup({ ...signup, error: err.response.data.errors[0] });
+    } finally {
+      dispatchAuth({ type: SET_LOADING, payload: false });
     }
   };
 

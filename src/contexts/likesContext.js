@@ -5,7 +5,7 @@ import { useAuth } from "customHooks";
 
 const LikesContext = createContext();
 
-const { GET_LIKES } = likesActions;
+const { GET_LIKES, SET_LOADING } = likesActions;
 
 const LikesProvider = ({ children }) => {
   const {
@@ -14,12 +14,15 @@ const LikesProvider = ({ children }) => {
 
   const [likesState, dispatchLikes] = useReducer(likesReducer, {
     likes: [],
+    isLoading: false,
   });
 
   useEffect(() => {
     isAuth &&
       (async () => {
         try {
+          dispatchLikes({ type: SET_LOADING, payload: true });
+
           const { data, status } = await getLikesService({ token });
 
           if (status === 200) {
@@ -30,6 +33,8 @@ const LikesProvider = ({ children }) => {
           }
         } catch (err) {
           console.error(err);
+        } finally {
+          dispatchLikes({ type: SET_LOADING, payload: false });
         }
       })();
   }, [token]);

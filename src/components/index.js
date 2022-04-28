@@ -7,3 +7,4 @@ export { PlaylistCard } from "./PlaylistCard/PlaylistCard";
 export { NewPlaylistForm } from "./NewPlaylistForm/NewPlaylistForm";
 export { Filters } from "./Filters/Filters";
 export { Sort } from "./Sort/Sort";
+export { Loader } from "./Loader/Loader";

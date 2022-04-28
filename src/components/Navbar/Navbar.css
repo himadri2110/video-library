@@ -15,6 +15,10 @@
   margin-right: 0.5rem;
 }
 
+.nav-bar .nav-brand i {
+  margin-right: 0.5rem;
+}
+
 .nav-bar .nav-brand .text-grey {
   color: var(--text-secondary);
 }
@@ -34,8 +38,8 @@
   margin: 0 0 0 1.5rem;
 }
 
-.nav-action .badge {
-  background-color: var(--text-color);
+.nav-action .login {
+  font-size: 1rem;
 }
 
 .nav-bar .nav-primary {

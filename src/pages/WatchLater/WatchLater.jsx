@@ -1,9 +1,9 @@
-import { Sidebar, VideoCard } from "components";
+import { Sidebar, VideoCard, Loader } from "components";
 import { useWatchLater } from "customHooks";
 
 const WatchLater = () => {
   const {
-    watchLaterState: { watchLater },
+    watchLaterState: { watchLater, isLoading },
   } = useWatchLater();
 
   return (
@@ -11,7 +11,9 @@ const WatchLater = () => {
       <Sidebar />
 
       <div className="component-container">
-        {watchLater.length ? (
+        {isLoading ? (
+          <Loader />
+        ) : watchLater.length ? (
           <>
             <div className="route-header">
               <h4>Watch Later</h4>

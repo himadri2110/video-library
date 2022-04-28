@@ -5,7 +5,7 @@ import { useAuth } from "customHooks";
 
 const WatchLaterContext = createContext();
 
-const { GET_WATCHLATER } = watchLaterActions;
+const { GET_WATCHLATER, SET_LOADING } = watchLaterActions;
 
 const WatchLaterProvider = ({ children }) => {
   const {
@@ -14,12 +14,15 @@ const WatchLaterProvider = ({ children }) => {
 
   const [watchLaterState, dispatchWatchLater] = useReducer(watchLaterReducer, {
     watchLater: [],
+    isLoading: false,
   });
 
   useEffect(() => {
     isAuth &&
       (async () => {
         try {
+          dispatchWatchLater({ type: SET_LOADING, payload: true });
+
           const { data, status } = await getWatchLaterService({ token });
 
           if (status === 200) {
@@ -30,6 +33,8 @@ const WatchLaterProvider = ({ children }) => {
           }
         } catch (err) {
           console.error(err);
+        } finally {
+          dispatchWatchLater({ type: SET_LOADING, payload: false });
         }
       })();
   }, [token]);

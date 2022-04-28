@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav className="nav-bar">
       <Link to="/" className="nav-brand">
-        <i className="fa-regular fa-circle-play"></i>{" "}
+        <i className="fa-regular fa-circle-play"></i>
         <span className="text-grey">Code</span>Play
       </Link>
 
@@ -20,17 +20,13 @@ const Navbar = () => {
       </div>
 
       <div className="nav-action">
-        <Link to="/explore" className="nav-primary">
-          <span>Explore</span>
-        </Link>
-
         {isAuth ? (
           <Link to="/profile" title="Profile">
             <i className="fa-solid fa-user"></i>
           </Link>
         ) : (
-          <Link to="/login" title="Login">
-            <i className="fa-solid fa-sign-in"></i>
+          <Link to="/login" className="login">
+            <button className="btn btn-primary">Login</button>
           </Link>
         )}
       </div>

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { LikesContext } from "contexts";
 import { addLikedVideoService, removeLikedVideoService } from "services";
 import { useAuth } from "customHooks";
@@ -18,9 +19,12 @@ const useLikes = () => {
       const { data, status } = await addLikedVideoService({ token, video });
 
       if (status === 201) {
+        toast.success("Added to likes");
+
         dispatchLikes({ type: GET_LIKES, payload: { likes: data.likes } });
       }
     } catch (err) {
+      toast.error("Error occured. Try again later.");
       console.error(err);
     }
   };
@@ -30,9 +34,12 @@ const useLikes = () => {
       const { data, status } = await removeLikedVideoService({ token, video });
 
       if (status === 200) {
+        toast.success("Removed from likes");
+
         dispatchLikes({ type: GET_LIKES, payload: { likes: data.likes } });
       }
     } catch (err) {
+      toast.error("Error occured. Try again later.");
       console.error(err);
     }
   };

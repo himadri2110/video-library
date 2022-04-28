@@ -1,7 +1,11 @@
 import { playlistActions } from "reducers";
 
-const { GET_PLAYLISTS, ADD_VIDEO_TO_PLAYLIST, DELETE_VIDEO_FROM_PLAYLIST } =
-  playlistActions;
+const {
+  GET_PLAYLISTS,
+  ADD_VIDEO_TO_PLAYLIST,
+  DELETE_VIDEO_FROM_PLAYLIST,
+  SET_LOADING,
+} = playlistActions;
 
 const playlistsReducer = (state, { type, payload }) => {
   switch (type) {
@@ -25,6 +29,9 @@ const playlistsReducer = (state, { type, payload }) => {
           playlist._id === payload.playlist._id ? payload.playlist : playlist
         ),
       };
+
+    case SET_LOADING:
+      return { ...state, isLoading: payload };
 
     default:
       return state;
