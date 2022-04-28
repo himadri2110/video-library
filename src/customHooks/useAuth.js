@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "contexts";
 import { loginService, signupService } from "services";
 import { authActions } from "reducers";
@@ -8,12 +9,7 @@ const useAuth = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const {
-    authState,
-    authState: { isLoading },
-    dispatchAuth,
-    navigate,
-  } = useContext(AuthContext);
+  const { authState, dispatchAuth, navigate } = useContext(AuthContext);
   const { SET_TOKEN, SET_AUTH, SET_LOADING } = authActions;
 
   const loginHandler = async (e, login, setLogin) => {
@@ -37,6 +33,10 @@ const useAuth = () => {
         localStorage.setItem("VL_isAuth", true);
         localStorage.setItem("VL_token", data.encodedToken);
         localStorage.setItem("VL_user", JSON.stringify(data.foundUser));
+
+        toast.success(`Welcome back, ${data.foundUser.firstName}!`, {
+          icon: "👋",
+        });
 
         navigate(from, { replace: true });
       }
@@ -67,6 +67,10 @@ const useAuth = () => {
         dispatchAuth({
           type: SET_AUTH,
           payload: { isAuth: true },
+        });
+
+        toast.success(`Hi, ${data.createdUser.firstName}!`, {
+          icon: "👋",
         });
 
         navigate(from, { replace: true });

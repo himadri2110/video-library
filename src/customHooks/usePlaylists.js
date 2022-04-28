@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { PlaylistsContext } from "contexts";
 import {
   addNewPlaylistService,
@@ -33,6 +34,8 @@ const usePlaylists = () => {
       });
 
       if (status === 201) {
+        toast.success("New playlist created");
+
         dispatchPlaylists({
           type: GET_PLAYLISTS,
           payload: { playlists: data.playlists },
@@ -45,6 +48,7 @@ const usePlaylists = () => {
           });
       }
     } catch (err) {
+      toast.error("Error occured. Try again later.");
       console.error(err.response);
     } finally {
       dispatchPlaylists({ type: SET_LOADING, payload: false });
@@ -62,12 +66,15 @@ const usePlaylists = () => {
       });
 
       if (status === 201) {
+        toast.success("Video added to playlist");
+
         dispatchPlaylists({
           type: ADD_VIDEO_TO_PLAYLIST,
           payload: { playlist: data.playlist },
         });
       }
     } catch (err) {
+      toast.error("Error occured. Try again later.");
       console.error(err);
     } finally {
       dispatchPlaylists({ type: SET_LOADING, payload: false });
@@ -85,12 +92,15 @@ const usePlaylists = () => {
       });
 
       if (status === 200) {
+        toast.success("Video deleted from playlist");
+
         dispatchPlaylists({
           type: DELETE_VIDEO_FROM_PLAYLIST,
           payload: { playlist: data.playlist },
         });
       }
     } catch (err) {
+      toast.error("Error occured. Try again later.");
       console.error(err);
     } finally {
       dispatchPlaylists({ type: SET_LOADING, payload: false });
@@ -107,12 +117,15 @@ const usePlaylists = () => {
       });
 
       if (status === 200) {
+        toast.success("Playlist deleted");
+
         dispatchPlaylists({
           type: GET_PLAYLISTS,
           payload: { playlists: data.playlists },
         });
       }
     } catch (err) {
+      toast.error("Error occured. Try again later.");
       console.error(err);
     } finally {
       dispatchPlaylists({ type: SET_LOADING, payload: false });
