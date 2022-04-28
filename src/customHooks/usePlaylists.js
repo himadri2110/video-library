@@ -16,11 +16,17 @@ const usePlaylists = () => {
     authState: { token },
   } = useAuth();
 
-  const { GET_PLAYLISTS, ADD_VIDEO_TO_PLAYLIST, DELETE_VIDEO_FROM_PLAYLIST } =
-    playlistActions;
+  const {
+    GET_PLAYLISTS,
+    ADD_VIDEO_TO_PLAYLIST,
+    DELETE_VIDEO_FROM_PLAYLIST,
+    SET_LOADING,
+  } = playlistActions;
 
   const createNewPlaylist = async ({ newPlaylistName, video }) => {
     try {
+      dispatchPlaylists({ type: SET_LOADING, payload: true });
+
       const { data, status } = await addNewPlaylistService({
         token,
         newPlaylistName,
@@ -40,11 +46,15 @@ const usePlaylists = () => {
       }
     } catch (err) {
       console.error(err.response);
+    } finally {
+      dispatchPlaylists({ type: SET_LOADING, payload: false });
     }
   };
 
   const addVideoToPlaylist = async ({ playlist, video }) => {
     try {
+      dispatchPlaylists({ type: SET_LOADING, payload: true });
+
       const { data, status } = await addVideoToPlaylistService({
         token,
         playlist,
@@ -59,11 +69,15 @@ const usePlaylists = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      dispatchPlaylists({ type: SET_LOADING, payload: false });
     }
   };
 
   const deleteVideoFromPlaylist = async ({ videoInPlaylist, playlist }) => {
     try {
+      dispatchPlaylists({ type: SET_LOADING, payload: true });
+
       const { data, status } = await deleteVideoFromPlaylistService({
         token,
         playlist,
@@ -78,11 +92,15 @@ const usePlaylists = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      dispatchPlaylists({ type: SET_LOADING, payload: false });
     }
   };
 
   const deletePlaylist = async (playlistId) => {
     try {
+      dispatchPlaylists({ type: SET_LOADING, payload: true });
+
       const { data, status } = await deletePlaylistService({
         token,
         playlistId,
@@ -96,6 +114,8 @@ const usePlaylists = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      dispatchPlaylists({ type: SET_LOADING, payload: false });
     }
   };
 

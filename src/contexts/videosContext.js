@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { videosReducer, videoActions } from "reducers";
 import { getVideoService } from "services";
 
-const { GET_VIDEOS } = videoActions;
+const { GET_VIDEOS, SET_LOADING } = videoActions;
 
 const VideosContext = createContext();
 
@@ -12,11 +12,14 @@ const VideosProvider = ({ children }) => {
     searchText: "",
     filterText: "All",
     sortBy: "",
+    isLoading: false,
   });
 
   useEffect(() => {
     (async () => {
       try {
+        dispatchVideo({ type: SET_LOADING, payload: true });
+
         const { data, status } = await getVideoService();
 
         if (status === 200) {
@@ -27,6 +30,8 @@ const VideosProvider = ({ children }) => {
         }
       } catch (err) {
         console.error(err);
+      } finally {
+        dispatchVideo({ type: SET_LOADING, payload: false });
       }
     })();
   }, []);

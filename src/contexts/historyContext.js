@@ -5,7 +5,7 @@ import { useAuth } from "customHooks";
 
 const HistoryContext = createContext();
 
-const { GET_HISTORY } = historyActions;
+const { GET_HISTORY, SET_LOADING } = historyActions;
 
 const HistoryProvider = ({ children }) => {
   const {
@@ -14,12 +14,15 @@ const HistoryProvider = ({ children }) => {
 
   const [historyState, dispatchHistory] = useReducer(historyReducer, {
     history: [],
+    isLoading: false,
   });
 
   useEffect(() => {
     isAuth &&
       (async () => {
         try {
+          dispatchHistory({ type: SET_LOADING, payload: true });
+
           const { data, status } = await getHistoryService({ token });
 
           if (status === 200) {
@@ -30,6 +33,8 @@ const HistoryProvider = ({ children }) => {
           }
         } catch (err) {
           console.error(err);
+        } finally {
+          dispatchHistory({ type: SET_LOADING, payload: false });
         }
       })();
   }, [token]);

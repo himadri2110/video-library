@@ -8,7 +8,7 @@ import {
 } from "services";
 import { historyActions } from "reducers";
 
-const { GET_HISTORY } = historyActions;
+const { GET_HISTORY, SET_LOADING } = historyActions;
 
 const useHistory = () => {
   const { historyState, dispatchHistory } = useContext(HistoryContext);
@@ -34,6 +34,8 @@ const useHistory = () => {
 
   const removeVideoFromHistory = async ({ video }) => {
     try {
+      dispatchHistory({ type: SET_LOADING, payload: true });
+
       const { data, status } = await removeFromHistoryService({ token, video });
 
       if (status === 200) {
@@ -44,11 +46,15 @@ const useHistory = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      dispatchHistory({ type: SET_LOADING, payload: false });
     }
   };
 
   const clearHistory = async () => {
     try {
+      dispatchHistory({ type: SET_LOADING, payload: true });
+
       const { data, status } = await clearHistoryService({ token });
 
       if (status === 200) {
@@ -59,6 +65,8 @@ const useHistory = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      dispatchHistory({ type: SET_LOADING, payload: false });
     }
   };
 

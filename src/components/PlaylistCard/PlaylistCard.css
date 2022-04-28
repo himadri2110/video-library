@@ -1,6 +1,7 @@
 .playlist-card {
   position: relative;
   height: 10rem;
+  cursor: pointer;
 }
 
 .playlist-card .resp-img {

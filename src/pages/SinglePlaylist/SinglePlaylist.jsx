@@ -1,13 +1,13 @@
 import "./SinglePlaylist.css";
 import { useParams } from "react-router-dom";
-import { Sidebar, VideoCard } from "components";
+import { Sidebar, VideoCard, Loader } from "components";
 import { usePlaylists } from "customHooks";
 
 const SinglePlaylist = () => {
   const { playlistId } = useParams();
 
   const {
-    playlistsState: { playlists },
+    playlistsState: { playlists, isLoading },
   } = usePlaylists();
 
   const currentPlaylist = playlists?.find(
@@ -31,14 +31,18 @@ const SinglePlaylist = () => {
             </div>
 
             <div className="playlist-videos">
-              {currentPlaylist.videos.map((video) => (
-                <VideoCard
-                  video={video}
-                  key={video._id}
-                  videoCardInPlaylist={videoCardInPlaylist}
-                  currentPlaylist={currentPlaylist}
-                />
-              ))}
+              {isLoading ? (
+                <Loader />
+              ) : (
+                currentPlaylist.videos.map((video) => (
+                  <VideoCard
+                    video={video}
+                    key={video._id}
+                    videoCardInPlaylist={videoCardInPlaylist}
+                    currentPlaylist={currentPlaylist}
+                  />
+                ))
+              )}
             </div>
           </>
         ) : (

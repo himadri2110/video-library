@@ -8,13 +8,20 @@ const useAuth = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const { authState, dispatchAuth, navigate } = useContext(AuthContext);
-  const { SET_TOKEN, SET_AUTH } = authActions;
+  const {
+    authState,
+    authState: { isLoading },
+    dispatchAuth,
+    navigate,
+  } = useContext(AuthContext);
+  const { SET_TOKEN, SET_AUTH, SET_LOADING } = authActions;
 
   const loginHandler = async (e, login, setLogin) => {
     e.preventDefault();
 
     try {
+      dispatchAuth({ type: SET_LOADING, payload: true });
+
       const { data, status } = await loginService(login.input);
 
       if (status === 200) {
@@ -35,6 +42,8 @@ const useAuth = () => {
       }
     } catch (err) {
       setLogin({ ...login, error: err.response.data.errors[0] });
+    } finally {
+      dispatchAuth({ type: SET_LOADING, payload: false });
     }
   };
 
@@ -42,6 +51,8 @@ const useAuth = () => {
     e.preventDefault();
 
     try {
+      dispatchAuth({ type: SET_LOADING, payload: true });
+
       const { data, status } = await signupService(signup.input);
 
       if (status === 201) {
@@ -62,6 +73,8 @@ const useAuth = () => {
       }
     } catch (err) {
       setSignup({ ...signup, error: err.response.data.errors[0] });
+    } finally {
+      dispatchAuth({ type: SET_LOADING, payload: false });
     }
   };
 

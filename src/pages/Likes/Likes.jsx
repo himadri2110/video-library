@@ -1,9 +1,9 @@
-import { Sidebar, VideoCard } from "components";
+import { Sidebar, VideoCard, Loader } from "components";
 import { useLikes } from "customHooks";
 
 const Likes = () => {
   const {
-    likesState: { likes },
+    likesState: { likes, isLoading },
   } = useLikes();
 
   return (
@@ -11,7 +11,9 @@ const Likes = () => {
       <Sidebar />
 
       <div className="component-container">
-        {likes.length ? (
+        {isLoading ? (
+          <Loader />
+        ) : likes.length ? (
           <>
             <div className="route-header">
               <h4>Your likes</h4>

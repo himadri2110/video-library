@@ -9,7 +9,7 @@ const useWatchLater = () => {
     authState: { token },
   } = useAuth();
 
-  const { GET_WATCHLATER } = watchLaterActions;
+  const { GET_WATCHLATER, SET_LOADING } = watchLaterActions;
   const { watchLaterState, dispatchWatchLater } = useContext(WatchLaterContext);
 
   const addToWatchLater = async ({ video }) => {
@@ -29,6 +29,8 @@ const useWatchLater = () => {
 
   const removeFromWatchLater = async ({ video }) => {
     try {
+      dispatchWatchLater({ type: SET_LOADING, payload: true });
+
       const { data, status } = await removeFromWatchLaterService({
         token,
         video,
@@ -42,6 +44,8 @@ const useWatchLater = () => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      dispatchWatchLater({ type: SET_LOADING, payload: false });
     }
   };
 

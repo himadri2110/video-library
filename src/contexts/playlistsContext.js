@@ -3,7 +3,7 @@ import { playlistsReducer, playlistActions } from "reducers";
 import { getPlaylistsService } from "services";
 import { useAuth } from "customHooks";
 
-const { GET_PLAYLISTS } = playlistActions;
+const { GET_PLAYLISTS, SET_LOADING } = playlistActions;
 
 const PlaylistsContext = createContext();
 
@@ -14,12 +14,15 @@ const PlaylistsProvider = ({ children }) => {
 
   const [playlistsState, dispatchPlaylists] = useReducer(playlistsReducer, {
     playlists: [],
+    isLoading: false,
   });
 
   useEffect(() => {
     isAuth &&
       (async () => {
         try {
+          dispatchPlaylists({ type: SET_LOADING, payload: true });
+
           const { data, status } = await getPlaylistsService(token);
 
           if (status === 200) {
@@ -30,6 +33,8 @@ const PlaylistsProvider = ({ children }) => {
           }
         } catch (err) {
           console.error(err);
+        } finally {
+          dispatchPlaylists({ type: SET_LOADING, payload: false });
         }
       })();
   }, [token]);

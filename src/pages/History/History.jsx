@@ -1,9 +1,9 @@
-import { Sidebar, VideoCard } from "components";
+import { Sidebar, VideoCard, Loader } from "components";
 import { useHistory } from "customHooks";
 
 const History = () => {
   const {
-    historyState: { history },
+    historyState: { history, isLoading },
     clearHistory,
   } = useHistory();
 
@@ -12,7 +12,9 @@ const History = () => {
       <Sidebar />
 
       <div className="component-container">
-        {history.length ? (
+        {isLoading ? (
+          <Loader />
+        ) : history.length ? (
           <>
             <div className="route-header">
               <h4>Watch History</h4>

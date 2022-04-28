@@ -1,13 +1,13 @@
 import "./PlaylistModal.css";
 import { useState } from "react";
 import { usePlaylists } from "customHooks";
-import { NewPlaylistForm } from "components";
+import { NewPlaylistForm, Loader } from "components";
 
 const PlaylistModal = ({ video, setShowPlaylistModal }) => {
   const [showModalForm, setShowModalForm] = useState(false);
 
   const {
-    playlistsState: { playlists },
+    playlistsState: { playlists, isLoading },
     addVideoToPlaylist,
     deleteVideoFromPlaylist,
   } = usePlaylists();
@@ -28,28 +28,35 @@ const PlaylistModal = ({ video, setShowPlaylistModal }) => {
         ) : null}
 
         <div className="form-group">
-          <div className="input-group">
-            {playlists.map((playlist) => {
-              const videoInPlaylist = playlist.videos.find(
-                (playlistVideo) => playlistVideo._id === video._id
-              );
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div className="input-group">
+              {playlists.map((playlist) => {
+                const videoInPlaylist = playlist.videos.find(
+                  (playlistVideo) => playlistVideo._id === video._id
+                );
 
-              return (
-                <label key={playlist._id} className="playlist-label">
-                  <input
-                    type="checkbox"
-                    checked={videoInPlaylist ? true : false}
-                    onChange={() =>
-                      videoInPlaylist
-                        ? deleteVideoFromPlaylist({ videoInPlaylist, playlist })
-                        : addVideoToPlaylist({ video, playlist })
-                    }
-                  />
-                  {playlist.title}
-                </label>
-              );
-            })}
-          </div>
+                return (
+                  <label key={playlist._id} className="playlist-label">
+                    <input
+                      type="checkbox"
+                      checked={videoInPlaylist ? true : false}
+                      onChange={() =>
+                        videoInPlaylist
+                          ? deleteVideoFromPlaylist({
+                              videoInPlaylist,
+                              playlist,
+                            })
+                          : addVideoToPlaylist({ video, playlist })
+                      }
+                    />
+                    {playlist.title}
+                  </label>
+                );
+              })}
+            </div>
+          )}
 
           {!showModalForm ? (
             <button
