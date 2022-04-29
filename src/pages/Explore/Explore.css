@@ -4,3 +4,17 @@
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 500px) {
+  .explore-filters {
+    flex-direction: column;
+    align-items: unset;
+    justify-content: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .explore-filters .sort-container {
+    align-self: flex-end;
+  }
+}

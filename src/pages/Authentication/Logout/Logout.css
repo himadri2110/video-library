@@ -7,7 +7,7 @@ section.logout-container {
 }
 
 .logout-container .card-wrapper {
-  margin: auto;
+  margin: 5rem auto;
   padding: 1rem;
   max-width: 600px;
   border: 1px solid var(--bg-secondary);
@@ -15,7 +15,8 @@ section.logout-container {
 }
 
 .logout-container .card-wrapper > * {
-  padding: 0.5rem;
+  padding: 1rem;
+  line-height: unset;
 }
 
 .card-wrapper .card-icon i {

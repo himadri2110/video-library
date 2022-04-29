@@ -29,3 +29,15 @@
   font-size: 0.9rem;
   color: var(--text-secondary);
 }
+
+@media screen and (max-width: 450px) {
+  .profile-container {
+    width: 90%;
+  }
+
+  .profile-container .profile-details {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
