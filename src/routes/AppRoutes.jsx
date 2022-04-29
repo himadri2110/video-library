@@ -13,6 +13,7 @@ import {
   Likes,
   History,
   UserProfile,
+  Home,
 } from "pages";
 
 const AppRoutes = () => {
@@ -21,7 +22,7 @@ const AppRoutes = () => {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Explore />} />
+        <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/explore/:videoId" element={<SingleVideo />} />
 
