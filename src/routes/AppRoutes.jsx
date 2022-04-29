@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "routes/RequiresAuth";
 import { Navbar, ResetScroll } from "components";
 import {
@@ -14,6 +14,7 @@ import {
   History,
   UserProfile,
   Home,
+  PageNotFound,
 } from "pages";
 
 const AppRoutes = () => {
@@ -40,7 +41,7 @@ const AppRoutes = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
 
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </ResetScroll>
     </div>
