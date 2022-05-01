@@ -1,6 +1,6 @@
 .single-video-container {
   display: grid;
-  grid-template-columns: 6fr 4fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .video-details .video-header {
@@ -55,4 +55,17 @@
 .video-details .video-body .video-description {
   font-size: 0.9rem;
   margin-top: 0.5rem;
+  text-align: justify;
+}
+
+@media screen and (max-width: 700px) {
+  .single-video-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .video-details .video-subheader {
+    display: initial;
+  }
 }

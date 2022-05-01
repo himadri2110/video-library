@@ -1,6 +1,6 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "routes/RequiresAuth";
-import { Navbar } from "components";
+import { Navbar, ResetScroll } from "components";
 import {
   Explore,
   Playlists,
@@ -13,6 +13,8 @@ import {
   Likes,
   History,
   UserProfile,
+  Home,
+  PageNotFound,
 } from "pages";
 
 const AppRoutes = () => {
@@ -20,26 +22,28 @@ const AppRoutes = () => {
     <div className="page-wrapper">
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Explore />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/explore/:videoId" element={<SingleVideo />} />
+      <ResetScroll>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/explore/:videoId" element={<SingleVideo />} />
 
-        <Route element={<RequiresAuth />}>
-          <Route path="/playlists" element={<Playlists />} />
-          <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
-          <Route path="/watchlater" element={<WatchLater />} />
-          <Route path="/likes" element={<Likes />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/profile" element={<UserProfile />} />
-        </Route>
+          <Route element={<RequiresAuth />}>
+            <Route path="/playlists" element={<Playlists />} />
+            <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
+            <Route path="/watchlater" element={<WatchLater />} />
+            <Route path="/likes" element={<Likes />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/profile" element={<UserProfile />} />
+          </Route>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/logout" element={<Logout />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/logout" element={<Logout />} />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </ResetScroll>
     </div>
   );
 };

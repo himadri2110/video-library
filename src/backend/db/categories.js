@@ -12,6 +12,14 @@ export const categories = [
   },
   {
     _id: uuid(),
+    categoryName: "HTML",
+  },
+  {
+    _id: uuid(),
+    categoryName: "CSS",
+  },
+  {
+    _id: uuid(),
     categoryName: "JavaScript",
   },
   {

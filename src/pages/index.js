@@ -1,3 +1,4 @@
+export { Home } from "./Home/Home";
 export { Explore } from "./Explore/Explore";
 export { Login } from "./Authentication/Login/Login";
 export { SignUp } from "./Authentication/SignUp/SignUp";
@@ -9,3 +10,4 @@ export { WatchLater } from "./WatchLater/WatchLater";
 export { Likes } from "./Likes/Likes";
 export { History } from "./History/History";
 export { UserProfile } from "./UserProfile/UserProfile";
+export { PageNotFound } from "./PageNotFound/PageNotFound";

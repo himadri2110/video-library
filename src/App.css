@@ -41,7 +41,6 @@ section.main-section {
 .route-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-template-rows: 320px;
   justify-content: space-around;
   gap: 1rem;
 }
@@ -101,4 +100,14 @@ button:active {
 
 .text-primary {
   color: var(--primary-color);
+}
+
+@media screen and (max-width: 900px) {
+  section.main-section {
+    grid-template-columns: 1fr;
+  }
+
+  .component-container {
+    margin-bottom: 3rem;
+  }
 }

@@ -7,7 +7,7 @@
 
 .single-playlist .video-card {
   display: grid;
-  grid-template-columns: 1.5fr 3.5fr;
+  grid-template-columns: 15rem 1fr;
   max-width: 100%;
 }
 
@@ -37,4 +37,22 @@
 
 .single-playlist .playlist-action:hover {
   color: inherit;
+}
+
+@media screen and (max-width: 600px) {
+  .single-playlist .video-card {
+    grid-template-columns: 7rem 1fr;
+  }
+
+  .single-playlist .video-card .card-text > *,
+  .single-playlist .playlist-action {
+    font-size: 80%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .single-playlist .video-card {
+    grid-template-columns: 6rem 1fr;
+  }
 }

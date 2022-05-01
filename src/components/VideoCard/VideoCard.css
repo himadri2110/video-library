@@ -2,6 +2,7 @@
   margin: 0;
   background-color: inherit;
   position: relative;
+  max-width: unset;
 }
 
 .video-card,
