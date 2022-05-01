@@ -19,18 +19,20 @@ const useHistory = () => {
   } = useAuth();
 
   const addVideoToHistory = async ({ video }) => {
-    try {
-      const { data, status } = await addToHistoryService({ token, video });
+    if (video) {
+      try {
+        const { data, status } = await addToHistoryService({ token, video });
 
-      if (status === 201) {
-        dispatchHistory({
-          type: GET_HISTORY,
-          payload: { history: data.history },
-        });
+        if (status === 201) {
+          dispatchHistory({
+            type: GET_HISTORY,
+            payload: { history: data.history },
+          });
+        }
+      } catch (err) {
+        toast.error("Error occured. Try again later.");
+        console.error(err);
       }
-    } catch (err) {
-      toast.error("Error occured. Try again later.");
-      console.error(err);
     }
   };
 
