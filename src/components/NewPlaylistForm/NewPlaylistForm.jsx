@@ -1,5 +1,6 @@
 import "./NewPlaylistForm.css";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { usePlaylists } from "customHooks";
 
 const NewPlaylistForm = ({ setShowModalForm, video }) => {
@@ -14,6 +15,9 @@ const NewPlaylistForm = ({ setShowModalForm, video }) => {
       setShowModalForm(false);
       setNewPlaylistName("");
       createNewPlaylist({ newPlaylistName, video });
+    } else {
+      setShowModalForm(false);
+      toast.error("Playlist name cannot be empty");
     }
   };
 
