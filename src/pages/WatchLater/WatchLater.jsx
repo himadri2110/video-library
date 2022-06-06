@@ -17,7 +17,10 @@ const WatchLater = () => {
           <>
             <div className="route-header">
               <h4>Watch Later</h4>
-              <span className="route-action">{watchLater.length} videos</span>
+              <span className="route-action">
+                <span>{watchLater.length}</span>
+                <span>{watchLater.length > 1 ? "videos" : "video"}</span>
+              </span>
             </div>
 
             <div className="route-container">

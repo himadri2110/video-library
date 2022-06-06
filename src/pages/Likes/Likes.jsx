@@ -17,7 +17,10 @@ const Likes = () => {
           <>
             <div className="route-header">
               <h4>Your likes</h4>
-              <span className="route-action">{likes.length} videos</span>
+              <span className="route-action">
+                <span>{likes.length}</span>
+                <span>{likes.length > 1 ? "videos" : "video"} </span>
+              </span>
             </div>
 
             <div className="route-container">

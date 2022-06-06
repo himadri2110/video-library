@@ -25,9 +25,16 @@ const SinglePlaylist = () => {
           <>
             <div className="playlist-header">
               <h2 className="playlist-title">{currentPlaylist.title}</h2>
-              <span className="playlist-length">
-                {currentPlaylist.videos.length} videos
-              </span>
+              {currentPlaylist.videos.length > 0 ? (
+                <span className="playlist-length">
+                  <span>{currentPlaylist.videos.length}</span>
+                  <span>
+                    {currentPlaylist.videos.length > 1 ? "videos" : "video"}
+                  </span>
+                </span>
+              ) : (
+                <span>No videos</span>
+              )}
             </div>
 
             <div className="playlist-videos">

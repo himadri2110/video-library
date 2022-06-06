@@ -53,6 +53,8 @@ section.main-section {
 }
 
 .route-action {
+  display: flex;
+  gap: 0.2rem;
   font-size: 0.9rem;
 }
 

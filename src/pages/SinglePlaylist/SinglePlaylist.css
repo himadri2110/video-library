@@ -5,6 +5,11 @@
   margin-bottom: 1rem;
 }
 
+.single-playlist .playlist-length {
+  display: flex;
+  gap: 0.2rem;
+}
+
 .single-playlist .video-card {
   display: grid;
   grid-template-columns: 15rem 1fr;
