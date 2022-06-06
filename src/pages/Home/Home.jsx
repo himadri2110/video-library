@@ -10,11 +10,13 @@ const Home = () => {
       </div>
 
       <div className="home-content">
-        <p className="home-header">Leverage your Coding skills</p>
+        <p className="home-header">
+          Tutorials curated to leverage your Coding skills
+        </p>
 
         <div className="home-action">
           <Link to="/explore">
-            <button className="btn btn-primary">Explore</button>
+            <button className="btn btn-primary">Watch Now</button>
           </Link>
         </div>
 

@@ -65,6 +65,7 @@ const SingleVideo = () => {
         <div className="video-details">
           <div className="video-thumbnail">
             <ReactPlayer
+              className="video-player"
               url={videoThumbnail(videoId)}
               playing={true}
               width="100%"

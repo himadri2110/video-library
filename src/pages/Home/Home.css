@@ -37,11 +37,13 @@ section.home-container {
 .home-content p {
   font-size: 2rem;
   font-weight: bold;
+  max-width: 30ch;
   margin: 1rem 0;
 }
 
 .home-action .btn {
   font-size: 1.1rem;
+  padding: 0.3rem 0.8rem;
 }
 
 .home-filters {
