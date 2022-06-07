@@ -88,8 +88,8 @@ const Login = () => {
                   setLogin({
                     ...login,
                     input: {
-                      email: "johndoe@gmail.com",
-                      password: "johndoe123",
+                      email: "himadri123@gmail.com",
+                      password: "himadri123",
                     },
                   })
                 }
